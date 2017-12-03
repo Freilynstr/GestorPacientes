@@ -14,6 +14,7 @@ import java.sql.Statement;
 /**
  *
  * @author Santiago Pache
+ * @author Freddy Rondon
  */
 public class ConeccionMySQL implements Conexion{
 

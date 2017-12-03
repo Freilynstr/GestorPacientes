@@ -11,9 +11,8 @@ import java.sql.ResultSet;
  *
  * @author Santiago Pache
  */
-public interface Coneccion {
+public interface Conexion {
     public ResultSet select(String sql);
     public boolean insert(String sql);
-    Coneccion getInstance();
-    
+    Conexion getInstance(String host,String use,String key,String database);
 }

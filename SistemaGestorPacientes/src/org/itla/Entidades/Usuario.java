@@ -9,7 +9,7 @@ public class Usuario {
     String telefonos;
     String direccion;
     String cedula;
-    enum tipo{Asistente, Admnistrador};
+    String tipo;
     
     
     //Constructores
@@ -17,7 +17,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int codigoEmpleado, String nombre, String apellido, String telefonos, String direccion, String cedula, enum tipo) {
+    public Usuario(int codigoEmpleado, String nombre, String apellido, String telefonos, String direccion, String cedula, String tipo) {
         this.codigoEmpleado = codigoEmpleado;
         this.nombre = nombre;
         this.apellido = apellido;

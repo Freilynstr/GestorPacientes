@@ -5,10 +5,16 @@
  */
 package org.itla.Modelos;
 
+import org.itla.Conexion.Conexion;
+import org.itla.Conexion.ConexionMySQL;
+
 /**
  *
  * @author Lenovo
  */
 public class Asistente {
-    
+    Conexion conecion;
+    public Asistente(){
+        conecion=ConexionMySQL.getInstance();
+    }
 }

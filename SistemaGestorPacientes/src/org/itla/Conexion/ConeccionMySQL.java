@@ -23,6 +23,7 @@ public class ConeccionMySQL implements Conexion{
     private Statement enunciado;
     private String freddy;
     private String freddyRondon;
+    private String pache;
     
     @Override
     public ResultSet select(String sql) {

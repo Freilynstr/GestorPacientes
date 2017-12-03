@@ -5,10 +5,15 @@
  */
 package org.itla.Coneccion;
 
+import java.sql.ResultSet;
+
 /**
  *
  * @author Santiago Pache
  */
 public interface Coneccion {
+    public ResultSet select(String sql);
+    public boolean insert(String sql);
+    Coneccion getInstance();
     
 }

@@ -15,7 +15,6 @@ import org.itla.entidades.ResultadoPrueba;
 /**
  *
  * @author Santiago Pache
- * @author Freddy Rondon
  */
 public class ConexionMySQL implements Conexion{
 

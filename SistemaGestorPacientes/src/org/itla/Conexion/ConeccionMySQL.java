@@ -21,6 +21,8 @@ public class ConeccionMySQL implements Conexion{
     private static ConeccionMySQL instancia;
     private Connection coneccion;
     private Statement enunciado;
+    private String freddy;
+    
     @Override
     public ResultSet select(String sql) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

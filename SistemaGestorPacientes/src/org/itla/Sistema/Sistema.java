@@ -5,6 +5,7 @@ import org.itla.Conexion.ConexionMySQL;
 
 public class Sistema {
     public static void main(String[] args) {
-        Conexion conection = ConexionMySQL.getInstance("localhost","root","","gestorpacientes");
+        Conexion conection = ConexionMySQL.getInstance();
+        conection.conectar("localhost","root","","gestorpacientes");
     }
 }

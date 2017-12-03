@@ -12,6 +12,7 @@ import java.sql.ResultSet;
  * @author Santiago Pache
  */
 public interface Conexion {
+    public void conectar(String host,String user,String key,String database);
     public ResultSet select(String sql);
     public boolean insert(String sql);
 }

@@ -3,8 +3,7 @@ package org.itla.entidades;
 import javax.swing.ImageIcon;
 
 public class Paciente {
-    //Mantenimiento de Pacientes (Nombre, apellido, teléfono, dirección, cédula, fecha
-    //de nacimiento, fumador, alergias, foto).
+    
     //Atributos
     String nombre;
     String apellido;

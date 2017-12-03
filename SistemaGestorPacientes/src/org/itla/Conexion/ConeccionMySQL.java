@@ -14,12 +14,14 @@ import java.sql.Statement;
 /**
  *
  * @author Santiago Pache
+ * @author Freddy Rondon
  */
 public class ConeccionMySQL implements Conexion{
 
     private static ConeccionMySQL instancia;
     private Connection coneccion;
     private Statement enunciado;
+    
     @Override
     public ResultSet select(String sql) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

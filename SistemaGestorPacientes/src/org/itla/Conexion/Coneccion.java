@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.itla.Coneccion;
+package org.itla.Conexion;
+
+import java.sql.ResultSet;
 
 /**
  *
  * @author Santiago Pache
  */
-public class ConeccionMySQL {
+public interface Coneccion {
+    public ResultSet select(String sql);
+    public boolean insert(String sql);
+    Coneccion getInstance();
     
 }

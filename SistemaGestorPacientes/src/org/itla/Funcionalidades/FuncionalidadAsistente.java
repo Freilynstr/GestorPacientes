@@ -5,10 +5,17 @@
  */
 package org.itla.Funcionalidades;
 
+import java.util.ArrayList;
+import org.itla.Entidades.Medico;
+import org.itla.Entidades.Paciente;
+
 /**
  *
  * @author Lenovo
  */
-public interface FuncionalidadAsistente {
+public class FuncionalidadAsistente implements Funcionalidad {
+    private ArrayList<Paciente> pacientes;
+    private ArrayList<Medico> medicos;
+    
     
 }

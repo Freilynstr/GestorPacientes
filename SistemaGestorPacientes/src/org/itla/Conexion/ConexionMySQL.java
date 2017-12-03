@@ -46,8 +46,7 @@ public class ConexionMySQL implements Conexion{
     
     
     
-    @Override
-    public static Conexion getInstance(String host,String user,String key,String database) {
+    public static ConexionMySQL getInstance(String host,String user,String key,String database) {
         if(instancia==null){
             instancia=new ConexionMySQL(host,user,key,database);
         }

@@ -5,12 +5,16 @@
  */
 package org.itla.Sistema;
 
+import org.itla.Conexion.Conexion;
+import org.itla.Conexion.ConexionMySQL;
+
 /**
  *
  * @author Santiago Pache
  */
 public class Sistema {
     public static void main(String[] args) {
+        Conexion conection=ConexionMySQL.getInstance("localhost","root","","gestorpacientes");
         
     }
 }

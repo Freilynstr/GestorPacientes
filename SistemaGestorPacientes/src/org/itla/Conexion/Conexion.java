@@ -14,5 +14,4 @@ import java.sql.ResultSet;
 public interface Conexion {
     public ResultSet select(String sql);
     public boolean insert(String sql);
-    public static Conexion getInstance(String host,String use,String key,String database);
 }

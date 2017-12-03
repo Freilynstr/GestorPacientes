@@ -1,4 +1,4 @@
-package org.itla.entidades;
+package org.itla.Entidades;
 
 public class ResultadoPrueba {
     //Atributos

@@ -1,4 +1,4 @@
-package org.itla.entidades;
+package org.itla.Entidades;
 
 public class Usuario {
     
@@ -9,19 +9,22 @@ public class Usuario {
     String telefonos;
     String direccion;
     String cedula;
+    enum tipo{Asistente, Admnistrador};
+    
     
     //Constructores
 
     public Usuario() {
     }
 
-    public Usuario(int codigoEmpleado, String nombre, String apellido, String telefonos, String direccion, String cedula) {
+    public Usuario(int codigoEmpleado, String nombre, String apellido, String telefonos, String direccion, String cedula, enum tipo) {
         this.codigoEmpleado = codigoEmpleado;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefonos = telefonos;
         this.direccion = direccion;
         this.cedula = cedula;
+        this.tipo = tipo;
     }
     
     //Getters y Setters

@@ -14,7 +14,6 @@ import org.itla.Conexion.ConexionMySQL;
  */
 public class Sistema {
     public static void main(String[] args) {
-        Conexion conection=ConexionMySQL.getInstance("localhost","root","","gestorpacientes");
-        System.out.print("klk");
+        Conexion conection = ConexionMySQL.getInstance("localhost","root","","gestorpacientes");
     }
 }

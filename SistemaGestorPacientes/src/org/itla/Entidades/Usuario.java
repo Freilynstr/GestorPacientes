@@ -16,6 +16,12 @@ public class Usuario {
 
     public Usuario() {
     }
+    
+    public Usuario(int codigoEmpleado, String nombre, String tipo){
+        this.codigoEmpleado = codigoEmpleado;
+        this.nombre = nombre;
+        this.tipo = tipo;
+    }
 
     public Usuario(int codigoEmpleado, String nombre, String apellido, String telefonos, String direccion, String cedula, String tipo) {
         this.codigoEmpleado = codigoEmpleado;
@@ -75,6 +81,14 @@ public class Usuario {
 
     public void setCedula(String cedula) {
         this.cedula = cedula;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
     
 }

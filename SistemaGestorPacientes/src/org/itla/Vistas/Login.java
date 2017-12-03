@@ -1,5 +1,8 @@
 package org.itla.Vistas;
 
+import javax.swing.JOptionPane;
+import org.itla.Modelos.LoginModel;
+
 public class Login extends javax.swing.JFrame {
    
     public Login() {
@@ -11,60 +14,65 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        iconHospital = new javax.swing.JLabel();
+        lblTituloVentana = new javax.swing.JLabel();
+        lblCodigoEmpleado = new javax.swing.JLabel();
+        txtCodigoEmpleado = new javax.swing.JTextField();
+        lblContraseña = new javax.swing.JLabel();
+        txtContraseña = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnOlvidarContraseña = new javax.swing.JLabel();
+        btnEntrar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestor de Pacientes/Login");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itla/Imagenes/hospital.png"))); // NOI18N
+        iconHospital.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconHospital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/itla/Imagenes/hospital.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("AUTENTICACIÓN");
+        lblTituloVentana.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lblTituloVentana.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTituloVentana.setText("AUTENTICACIÓN");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Usuario");
+        lblCodigoEmpleado.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblCodigoEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCodigoEmpleado.setText("Usuario");
 
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCodigoEmpleado.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtCodigoEmpleado.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Contraseña");
+        lblContraseña.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblContraseña.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblContraseña.setText("Contraseña");
 
-        jPasswordField1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtContraseña.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 2, 9)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("He olvidado mi contraseña");
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnOlvidarContraseña.setFont(new java.awt.Font("Tahoma", 2, 9)); // NOI18N
+        btnOlvidarContraseña.setForeground(new java.awt.Color(102, 102, 255));
+        btnOlvidarContraseña.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnOlvidarContraseña.setText("He olvidado mi contraseña");
+        btnOlvidarContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton1.setBackground(new java.awt.Color(0, 255, 51));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Entar");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEntrar.setBackground(new java.awt.Color(0, 255, 51));
+        btnEntrar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEntrar.setText("Entar");
+        btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(255, 102, 102));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Cancelar");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setBackground(new java.awt.Color(255, 102, 102));
+        btnSalir.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setText("Salir");
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,49 +81,49 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTituloVentana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(iconHospital, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtCodigoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCodigoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtContraseña, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnOlvidarContraseña, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(140, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE)
+                .addComponent(btnEntrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addComponent(btnSalir)
+                .addContainerGap(153, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(lblTituloVentana)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(iconHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(lblCodigoEmpleado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCodigoEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addComponent(lblContraseña)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
+                .addComponent(btnOlvidarContraseña)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnEntrar)
+                    .addComponent(btnSalir))
                 .addGap(0, 15, Short.MAX_VALUE))
         );
 
@@ -138,6 +146,10 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        this.AutenticarUsuario(txtCodigoEmpleado.getText(), new String(txtContraseña.getPassword()).toString());
+    }//GEN-LAST:event_btnEntrarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -172,16 +184,32 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton btnEntrar;
+    private javax.swing.JLabel btnOlvidarContraseña;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel iconHospital;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblCodigoEmpleado;
+    private javax.swing.JLabel lblContraseña;
+    private javax.swing.JLabel lblTituloVentana;
+    private javax.swing.JTextField txtCodigoEmpleado;
+    private javax.swing.JPasswordField txtContraseña;
     // End of variables declaration//GEN-END:variables
+
+    private void AutenticarUsuario(String codigoEmpleado, String contraseña) {
+        LoginModel log = new LoginModel();
+        if(log.Autenticar(codigoEmpleado, contraseña)){
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Credenciales incorrectas.");
+            this.LimpiarPantalla();
+        }
+    }
+
+    private void LimpiarPantalla() {
+        this.txtCodigoEmpleado.setText("");
+        this.txtContraseña.setText("");
+        this.txtCodigoEmpleado.requestFocus();
+    }
 }

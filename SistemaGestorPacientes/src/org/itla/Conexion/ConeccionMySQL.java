@@ -22,6 +22,7 @@ public class ConeccionMySQL implements Conexion{
     private Connection coneccion;
     private Statement enunciado;
     private String freddy;
+    private String freddyRondon;
     private String pache;
     
     @Override

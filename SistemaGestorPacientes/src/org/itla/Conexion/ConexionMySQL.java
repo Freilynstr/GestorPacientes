@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import org.itla.entidades.ResultadoPrueba;
 
 /**
  *
@@ -24,12 +25,24 @@ public class ConexionMySQL implements Conexion{
     
     @Override
     public ResultSet select(String sql) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ResultSet resultado=null;
+        try{
+            resultado=enunciado.executeQuery(sql);
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return resultado;
     }
 
     @Override
     public boolean insert(String sql) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean resultado=false;
+        try{
+            resultado=enunciado.execute(sql);
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return resultado;
     }
 
     @Override

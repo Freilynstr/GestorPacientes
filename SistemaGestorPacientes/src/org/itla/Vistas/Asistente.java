@@ -8,6 +8,7 @@ package org.itla.Vistas;
 import org.itla.Funcionalidades.Funcionalidad;
 import org.itla.Funcionalidades.FuncionalidadAsistente;
 
+
 /**
  *
  * @author Lenovo

@@ -44,17 +44,8 @@ public class ConexionMySQL implements Conexion{
         return resultado;
     }
     
-    
-    
-    public static ConexionMySQL getInstance(String host,String user,String key,String database) {
-        if(instancia==null){
-            instancia=new ConexionMySQL(host,user,key,database);
-        }
-        return instancia;
-    }
-    
-    
-    private ConexionMySQL(String host,String user,String key,String database){
+    @Override
+    public void conectar(String host,String user,String key,String database){
         try {
             //Cargar en memoria el driver de MySql
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -67,5 +58,18 @@ public class ConexionMySQL implements Conexion{
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+    
+    
+    public static ConexionMySQL getInstance() {
+        if(instancia==null){
+            instancia=new ConexionMySQL();
+        }
+        return instancia;
+    }
+    
+    
+    private ConexionMySQL(){
+        
     }
 }

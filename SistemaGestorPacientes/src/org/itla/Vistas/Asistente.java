@@ -5,6 +5,7 @@
  */
 package org.itla.Vistas;
 
+import org.itla.Algoritmos.AlgoritmosPacientes;
 import org.itla.Funcionalidades.Funcionalidad;
 import org.itla.Funcionalidades.FuncionalidadAsistente;
 
@@ -291,7 +292,7 @@ public class Asistente extends javax.swing.JFrame {
 
     private void txBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txBuscarPacienteActionPerformed
         if(cbBuscarPor.getSelectedItem().toString()=="Nombre"){
-            Algoritmos algoritmo=new AlgoritmoPaciente();
+            AlgoritmosPacientes algoritmo=new AlgoritmoPaciente();
         }
     }//GEN-LAST:event_txBuscarPacienteActionPerformed
 

@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import org.itla.Conexion.Conexion;
 import org.itla.Conexion.ConexionMySQL;
 
 public class LoginModel {
@@ -14,13 +15,9 @@ public class LoginModel {
     
     public boolean Autenticar(String codigoEmpleado, String contraseña){
         try {
-            Statement exec = /*Aquí va la conexión con la Base de Datos*/.createStatement();
-            ResultSet result = exec.executeQuery("SELECT * FROM usuarios WHERE username = '" + codigoEmpleado + "' AND password = '"+ contraseña + "'");
-            if(result.next()==true){
-                return true;
-            }else{
-                return false;
-            }
+            Conexion conexion = ConexionMySQL.getInstance();
+            ResultSet result = conexion.select("SELECT * FROM usuario WHERE id_usuario = '" + codigoEmpleado + "' AND clave = '"+ contraseña + "'");
+            return result.next()==true;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
             return false;

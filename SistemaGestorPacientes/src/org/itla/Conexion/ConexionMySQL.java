@@ -14,16 +14,12 @@ import java.sql.Statement;
 /**
  *
  * @author Santiago Pache
- * @author Freddy Rondon
  */
-public class ConeccionMySQL implements Conexion{
+public class ConexionMySQL implements Conexion{
 
-    private static ConeccionMySQL instancia;
+    private static ConexionMySQL instancia;
     private Connection coneccion;
     private Statement enunciado;
-    private String freddy;
-    private String freddyRondon;
-    private String pache;
     
     @Override
     public ResultSet select(String sql) {
@@ -38,13 +34,13 @@ public class ConeccionMySQL implements Conexion{
     @Override
     public Conexion getInstance(String host,String user,String key,String database) {
         if(instancia==null){
-            instancia=new ConeccionMySQL(host,user,key,database);
+            instancia=new ConexionMySQL(host,user,key,database);
         }
         return instancia;
     }
     
     
-    private ConeccionMySQL(String host,String user,String key,String database){
+    private ConexionMySQL(String host,String user,String key,String database){
         try {
             //Cargar en memoria el driver de MySql
             Class.forName("com.mysql.jdbc.Driver").newInstance();

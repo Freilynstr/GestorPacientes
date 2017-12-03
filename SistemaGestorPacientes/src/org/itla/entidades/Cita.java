@@ -4,7 +4,7 @@ public class Cita {
     Paciente paciente;
     String fecha;
     String hora;
-    String medico;
+    Medico medico;
     String causa;
 
     //Constructores
@@ -12,7 +12,7 @@ public class Cita {
     public Cita() {
     }
 
-    public Cita(Paciente paciente, String fecha, String hora, String medico, String causa) {
+    public Cita(Paciente paciente, String fecha, String hora, Medico medico, String causa) {
         this.paciente = paciente;
         this.fecha = fecha;
         this.hora = hora;
@@ -46,11 +46,11 @@ public class Cita {
         this.hora = hora;
     }
 
-    public String getMedico() {
+    public Medico getMedico() {
         return medico;
     }
 
-    public void setMedico(String medico) {
+    public void setMedico(Medico medico) {
         this.medico = medico;
     }
 

@@ -9,7 +9,6 @@ public class Recetas {
     ArrayList<String> Medicamentos = new ArrayList<>();
     
     //Constructores
-
     public Recetas() {
     }
 

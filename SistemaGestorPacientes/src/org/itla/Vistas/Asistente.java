@@ -5,6 +5,8 @@
  */
 package org.itla.Vistas;
 
+import org.itla.Funcionalidades.Funcionalidad;
+
 /**
  *
  * @author Lenovo
@@ -16,7 +18,7 @@ public class Asistente extends javax.swing.JFrame {
      */
     
     public static Asistente vista;
-    public Funcionalidades funcionalidad;
+    public Funcionalidad funcionalidad;
     
     public static Asistente getInstance(){
         if(vista==null){

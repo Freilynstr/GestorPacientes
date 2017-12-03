@@ -21,8 +21,6 @@ public class ConeccionMySQL implements Conexion{
     private static ConeccionMySQL instancia;
     private Connection coneccion;
     private Statement enunciado;
-    private String freddy;
-    private String pache;
     
     @Override
     public ResultSet select(String sql) {

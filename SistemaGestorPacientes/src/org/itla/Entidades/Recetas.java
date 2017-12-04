@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Recetas {
     //Atributos
     Paciente paciente;
+    Medico medico;
     Padecimiento padecimiento;
     ArrayList<String> Medicamentos = new ArrayList<>();
     
@@ -18,6 +19,14 @@ public class Recetas {
     }
     
     //Getters y Setters
+    
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
 
     public Paciente getPaciente() {
         return paciente;

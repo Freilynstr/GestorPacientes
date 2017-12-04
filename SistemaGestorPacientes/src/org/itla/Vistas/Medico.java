@@ -7,8 +7,7 @@ package org.itla.Vistas;
 
 import org.itla.Algoritmos.AlgoritmoPacienteNombre;
 import org.itla.Algoritmos.AlgoritmosPacientes;
-import org.itla.Funcionalidades.Funcionalidad;
-import org.itla.Funcionalidades.FuncionalidadAsistente;
+
 
 public class Medico extends javax.swing.JFrame {
 
@@ -17,7 +16,6 @@ public class Medico extends javax.swing.JFrame {
      */
     
     public static Medico vista;
-    public Funcionalidad funcionalidad;
     
     public static Medico getInstance(){
         if(vista==null){
@@ -29,7 +27,6 @@ public class Medico extends javax.swing.JFrame {
     
     private Medico() {
         initComponents();
-        funcionalidad=new FuncionalidadAsistente();
     }
 
     /**
@@ -256,16 +253,31 @@ public class Medico extends javax.swing.JFrame {
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Codigo", "Nombre"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable4.setColumnSelectionAllowed(true);
         jScrollPane4.setViewportView(jTable4);
+        jTable4.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (jTable4.getColumnModel().getColumnCount() > 0) {
+            jTable4.getColumnModel().getColumn(0).setResizable(false);
+            jTable4.getColumnModel().getColumn(0).setPreferredWidth(3);
+            jTable4.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jButton4.setBackground(new java.awt.Color(102, 255, 0));
         jButton4.setText("Agregar");
@@ -320,16 +332,29 @@ public class Medico extends javax.swing.JFrame {
 
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Paciente", "Padecimiento", "Medicamento"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane5.setViewportView(jTable5);
+        if (jTable5.getColumnModel().getColumnCount() > 0) {
+            jTable5.getColumnModel().getColumn(0).setResizable(false);
+            jTable5.getColumnModel().getColumn(1).setResizable(false);
+            jTable5.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         jButton7.setBackground(new java.awt.Color(102, 255, 0));
         jButton7.setText("Agregar");

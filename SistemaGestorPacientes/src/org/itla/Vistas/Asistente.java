@@ -5,10 +5,15 @@
  */
 package org.itla.Vistas;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import org.itla.Algoritmos.AlgoritmoPacienteApellido;
+import org.itla.Algoritmos.AlgoritmoPacienteCedula;
 import org.itla.Algoritmos.AlgoritmoPacienteNombre;
 import org.itla.Algoritmos.AlgoritmosPacientes;
-import org.itla.Funcionalidades.Funcionalidad;
-import org.itla.Funcionalidades.FuncionalidadAsistente;
+import org.itla.Entidades.Paciente;
+import org.itla.Modelos.AsistenteModel;
 
 
 /**
@@ -22,7 +27,7 @@ public class Asistente extends javax.swing.JFrame {
      */
     
     public static Asistente vista;
-    public Funcionalidad funcionalidad;
+    private AsistenteModel modelo;
     
     public static Asistente getInstance(){
         if(vista==null){
@@ -34,7 +39,7 @@ public class Asistente extends javax.swing.JFrame {
     
     private Asistente() {
         initComponents();
-        funcionalidad=new FuncionalidadAsistente();
+        modelo=new AsistenteModel();
     }
 
     /**
@@ -49,7 +54,7 @@ public class Asistente extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaPacientes = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         txBuscarPaciente = new java.awt.TextField();
         cbBuscarPor = new javax.swing.JComboBox<>();
@@ -69,18 +74,33 @@ public class Asistente extends javax.swing.JFrame {
         setTitle("Gestor Pacientes");
         setBackground(new java.awt.Color(0, 0, 0));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Cedula", "Nombre", "Apellido"
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tablaPacientes);
 
         jLabel2.setText("Buscar Paciente");
 
@@ -89,8 +109,13 @@ public class Asistente extends javax.swing.JFrame {
                 txBuscarPacienteActionPerformed(evt);
             }
         });
+        txBuscarPaciente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txBuscarPacienteKeyReleased(evt);
+            }
+        });
 
-        cbBuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Apellidio", "Cedula" }));
+        cbBuscarPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Apellido", "Cedula" }));
 
         jLabel4.setText("Buscar Por:");
 
@@ -199,12 +224,13 @@ public class Asistente extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -261,12 +287,35 @@ public class Asistente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txBuscarPacienteActionPerformed
-        if(cbBuscarPor.getSelectedItem().toString()=="Nombre"){
-            AlgoritmosPacientes algoritmo=new AlgoritmoPacienteNombre();
-            List<Paciente>=funcionalidad.l
-            Algoritmo.buscar();
-        }
+
     }//GEN-LAST:event_txBuscarPacienteActionPerformed
+
+    private void txBuscarPacienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txBuscarPacienteKeyReleased
+        // TODO add your handling code here:
+        List<Paciente> pacientesRecomendados=new ArrayList<>();
+        if(txBuscarPaciente.getText().equals("")){
+              pacientesRecomendados=modelo.pacientes();
+        }
+        else if(cbBuscarPor.getSelectedItem().toString().equals("Nombre")){
+            AlgoritmosPacientes algoritmo=new AlgoritmoPacienteNombre();
+            List<Paciente> pacientes=modelo.pacientes();
+            pacientesRecomendados=algoritmo.buscar(pacientes,txBuscarPaciente.getText());
+        }else if(cbBuscarPor.getSelectedItem().toString().equals("Apellido")){
+            AlgoritmosPacientes algoritmo=new AlgoritmoPacienteApellido();
+            List<Paciente> pacientes=modelo.pacientes();
+            pacientesRecomendados=algoritmo.buscar(pacientes,txBuscarPaciente.getText());
+        }else if(cbBuscarPor.getSelectedItem().toString().equals("Cedula")){
+            AlgoritmosPacientes algoritmo=new AlgoritmoPacienteCedula();
+            List<Paciente> pacientes=modelo.pacientes();
+            pacientesRecomendados=algoritmo.buscar(pacientes,txBuscarPaciente.getText());
+        }
+         DefaultTableModel modelo=(DefaultTableModel)tablaPacientes.getModel();
+         modelo.setRowCount(0);
+         for(Paciente paciente:pacientesRecomendados){
+             modelo.addRow(paciente.convertirAArray());
+         }
+        tablaPacientes.setModel(modelo);
+    }//GEN-LAST:event_txBuscarPacienteKeyReleased
 
     /**
      * @param args the command line arguments
@@ -319,8 +368,8 @@ public class Asistente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable tablaPacientes;
     private java.awt.TextField txBuscarPaciente;
     // End of variables declaration//GEN-END:variables
 }

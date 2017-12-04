@@ -27,7 +27,7 @@ public class Paciente {
         this.foto = foto;
     }
 
-    public Paciente(String nombre, String apellido, String cedula) {
+    public Paciente(String cedula, String nombre, String apellido) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
@@ -35,7 +35,13 @@ public class Paciente {
     
     public Paciente() {
     }
-
+    public String[] convertirAArray(){
+        String[] paciente=new String[3];
+        paciente[1]=this.nombre;
+        paciente[2]=this.apellido;
+        paciente[0]=this.cedula;
+        return paciente;
+    }
 
     //Getters and Setters
 

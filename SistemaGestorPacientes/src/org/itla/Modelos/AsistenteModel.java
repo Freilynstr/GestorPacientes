@@ -23,7 +23,7 @@ public class AsistenteModel {
     }
     public ArrayList<Paciente> pacientes(){
         ArrayList<Paciente> pacientes=new ArrayList<Paciente>();
-        String sql="select * from pacientes";
+        String sql="select * from paciente";
         conexion=ConexionMySQL.getInstance();
         conexion.conectar("localhost", "root", "", "gestorPacientes");
         ResultSet resultado=conexion.select(sql);
@@ -31,9 +31,10 @@ public class AsistenteModel {
             while(resultado.next()){
                 pacientes.add(
                         new Paciente(
+                                resultado.getString("cedula"),
                                 resultado.getString("nombre"),
-                                resultado.getString("apellido"),
-                                resultado.getString("cedula")
+                                resultado.getString("apellido")
+                                
                         )
                 );
             }

@@ -5,19 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 import org.itla.Entidades.Paciente;
 
-public class AlgoritmoPacienteNombre implements AlgoritmosPacientes{
+public class AlgoritmoPacienteCedula implements AlgoritmosPacientes{
     
-    public AlgoritmoPacienteNombre(){
+    public AlgoritmoPacienteCedula(){
         
     }
     @Override
-    public ArrayList<Paciente> buscar(List<Paciente> pacientes,String nombre){
+    public ArrayList<Paciente> buscar(List<Paciente> pacientes,String cedula){
         boolean pertenece=true;
         ArrayList<Paciente> encontrados= new ArrayList<>();
         for(Paciente paciente:pacientes){
-            for(int i=0;i<nombre.length();i++){
+            for(int i=0;i<cedula.length();i++){
                 pertenece=true;
-                if(paciente.getNombre().charAt(i)!=nombre.charAt(i)){
+                if(paciente.getCedula().charAt(i)!=cedula.charAt(i)){
                     pertenece=false;
                     break;
                 }

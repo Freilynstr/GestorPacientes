@@ -10,11 +10,6 @@ import org.itla.Algoritmos.AlgoritmosPacientes;
 import org.itla.Funcionalidades.Funcionalidad;
 import org.itla.Funcionalidades.FuncionalidadAsistente;
 
-
-/**
- *
- * @author Lenovo
- */
 public class Medico extends javax.swing.JFrame {
 
     /**

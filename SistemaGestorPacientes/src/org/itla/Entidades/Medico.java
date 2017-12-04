@@ -13,7 +13,14 @@ public class Medico extends Usuario{
 
     public Medico() {
     }
-
+    
+    public Medico(String nombre,String especialidad){
+        super();
+        super.setNombre(nombre);
+        this.especialidad=new Especialidad();
+        this.especialidad.setNombre(especialidad);
+    }
+    
     //Getter y Setter
     public Especialidad getEspecialidad() {
         return especialidad;

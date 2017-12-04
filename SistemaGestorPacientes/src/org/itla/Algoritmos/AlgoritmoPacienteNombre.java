@@ -10,7 +10,7 @@ public class AlgoritmoPacienteNombre implements AlgoritmosPacientes{
         
     }
     
-    public ArrayList<Paciente> buscar(){
+    public ArrayList<Paciente> buscar(ArrayList<Paciente> paciente){
         return null;
     }
     

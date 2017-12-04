@@ -12,9 +12,9 @@ import org.itla.Conexion.ConexionMySQL;
  *
  * @author Lenovo
  */
-public class Asistente {
+public class AsistenteModel {
     Conexion conecion;
-    public Asistente(){
+    public AsistenteModel(){
         conecion=ConexionMySQL.getInstance();
     }
 }

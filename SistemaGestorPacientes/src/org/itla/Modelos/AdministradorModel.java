@@ -86,5 +86,11 @@ public class AdministradorModel {
         conexion.insert(sql);      
     }
     
+    public void editarEspecialidad(Especialidad especialidad){
+        String sql = "UPDATE especialidad SET nombre='"+especialidad.getNombre()+"'"
+                + " WHERE nombre='"+especialidad.getNombre()+"'";
+        conexion.conectar("localhost", "root", "", "gestorPacientes");
+        conexion.insert(sql);      
+    }    
   
 }

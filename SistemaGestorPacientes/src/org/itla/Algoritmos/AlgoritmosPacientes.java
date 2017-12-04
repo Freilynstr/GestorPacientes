@@ -5,10 +5,14 @@
  */
 package org.itla.Algoritmos;
 
+import java.util.ArrayList;
+import java.util.List;
+import org.itla.Entidades.Paciente;
+
 /**
  *
  * @author Lenovo
  */
 public interface AlgoritmosPacientes {
-    
+    public ArrayList<Paciente> buscar(List<Paciente> pacientes,String nombre);
 }

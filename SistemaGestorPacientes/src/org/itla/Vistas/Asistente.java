@@ -5,10 +5,12 @@
  */
 package org.itla.Vistas;
 
+import java.util.List;
 import org.itla.Algoritmos.AlgoritmoPacienteNombre;
 import org.itla.Algoritmos.AlgoritmosPacientes;
-import org.itla.Funcionalidades.Funcionalidad;
+import org.itla.Entidades.Paciente;
 import org.itla.Funcionalidades.FuncionalidadAsistente;
+import org.itla.Modelos.AsistenteModel;
 
 
 /**
@@ -22,7 +24,7 @@ public class Asistente extends javax.swing.JFrame {
      */
     
     public static Asistente vista;
-    public Funcionalidad funcionalidad;
+    private AsistenteModel modelo;
     
     public static Asistente getInstance(){
         if(vista==null){
@@ -34,7 +36,7 @@ public class Asistente extends javax.swing.JFrame {
     
     private Asistente() {
         initComponents();
-        funcionalidad=new FuncionalidadAsistente();
+        modelo=new AsistenteModel();
     }
 
     /**
@@ -49,7 +51,7 @@ public class Asistente extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaPacientes = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         txBuscarPaciente = new java.awt.TextField();
         cbBuscarPor = new javax.swing.JComboBox<>();
@@ -69,7 +71,7 @@ public class Asistente extends javax.swing.JFrame {
         setTitle("Gestor Pacientes");
         setBackground(new java.awt.Color(0, 0, 0));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -80,7 +82,7 @@ public class Asistente extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tablaPacientes);
 
         jLabel2.setText("Buscar Paciente");
 
@@ -261,11 +263,16 @@ public class Asistente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txBuscarPacienteActionPerformed
-        if(cbBuscarPor.getSelectedItem().toString()=="Nombre"){
-            AlgoritmosPacientes algoritmo=new AlgoritmoPacienteNombre();
-            List<Paciente>=funcionalidad.l
-            Algoritmo.buscar();
+        List<Paciente> pacientesRecomendados;
+        if(txBuscarPaciente.getText().equals("")){
+              pacientesRecomendados=modelo.pacientes();
         }
+        else if(cbBuscarPor.getSelectedItem().toString().equals("Nombre")){
+            AlgoritmosPacientes algoritmo=new AlgoritmoPacienteNombre();
+            List<Paciente> pacientes=modelo.pacientes();
+            pacientesRecomendados=algoritmo.buscar(pacientes,txBuscarPaciente.getText());
+        }
+        Model modelo=tablaPacientes.getModel();
     }//GEN-LAST:event_txBuscarPacienteActionPerformed
 
     /**
@@ -319,8 +326,8 @@ public class Asistente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable tablaPacientes;
     private java.awt.TextField txBuscarPaciente;
     // End of variables declaration//GEN-END:variables
 }

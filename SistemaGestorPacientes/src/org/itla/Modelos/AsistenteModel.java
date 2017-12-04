@@ -21,6 +21,22 @@ public class AsistenteModel {
     public AsistenteModel(){
         conexion=ConexionMySQL.getInstance();
     }
+    
+    public ArrayList<String> Especialidades(){
+        ArrayList<String> especialidades=new ArrayList<String>();
+        String sql="select * from especialidad";
+        conexion=ConexionMySQL.getInstance();
+        conexion.conectar("localhost", "root", "", "gestorPacientes");
+        ResultSet resultado=conexion.select(sql);
+        try{
+            while(resultado.next()){
+                especialidades.add(resultado.getString("nombre"));
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return especialidades;
+    }
     public ArrayList<Paciente> pacientes(){
         ArrayList<Paciente> pacientes=new ArrayList<Paciente>();
         String sql="select * from paciente";

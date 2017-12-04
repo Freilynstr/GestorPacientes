@@ -12,6 +12,7 @@ import org.itla.Algoritmos.AlgoritmoPacienteApellido;
 import org.itla.Algoritmos.AlgoritmoPacienteCedula;
 import org.itla.Algoritmos.AlgoritmoPacienteNombre;
 import org.itla.Algoritmos.AlgoritmosPacientes;
+import org.itla.Entidades.Especialidad;
 import org.itla.Entidades.Paciente;
 import org.itla.Modelos.AsistenteModel;
 
@@ -28,6 +29,7 @@ public class Asistente extends javax.swing.JFrame {
     
     public static Asistente vista;
     private AsistenteModel modelo;
+    private List<String> especialidades;
     
     public static Asistente getInstance(){
         if(vista==null){
@@ -40,6 +42,10 @@ public class Asistente extends javax.swing.JFrame {
     private Asistente() {
         initComponents();
         modelo=new AsistenteModel();
+        especialidades=modelo.Especialidades();
+        for(String especialidad:especialidades){
+            jcMedicosEspecialidades.addItem(especialidad);
+        }
     }
 
     /**
@@ -60,6 +66,10 @@ public class Asistente extends javax.swing.JFrame {
         cbBuscarPor = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jcMedicosEspecialidades = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -153,15 +163,58 @@ public class Asistente extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Buscar Paciente", jPanel3);
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Especialidad"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel5.setText("Buscar Por:");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 606, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addGap(27, 27, 27)
+                        .addComponent(jcMedicosEspecialidades, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 225, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcMedicosEspecialidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Medicos Por especialidades", jPanel4);
@@ -361,14 +414,18 @@ public class Asistente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
+    private javax.swing.JComboBox<String> jcMedicosEspecialidades;
     private javax.swing.JTable tablaPacientes;
     private java.awt.TextField txBuscarPaciente;
     // End of variables declaration//GEN-END:variables

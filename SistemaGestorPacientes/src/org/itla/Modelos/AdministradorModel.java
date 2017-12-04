@@ -5,14 +5,10 @@
  */
 package org.itla.Modelos;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import org.itla.Conexion.Conexion;
 import org.itla.Conexion.ConexionMySQL;
 import org.itla.Entidades.Especialidad;
 import org.itla.Entidades.Medico;
-import org.itla.Entidades.Paciente;
 import org.itla.Entidades.Usuario;
 
 /**

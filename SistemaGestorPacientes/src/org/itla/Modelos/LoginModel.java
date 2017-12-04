@@ -2,13 +2,13 @@ package org.itla.Modelos;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.itla.Conexion.Conexion;
 import org.itla.Conexion.ConexionMySQL;
 import org.itla.Entidades.Usuario;
-import org.itla.Vistas.Login;
+import org.itla.Vistas.Administrador;
+import org.itla.Vistas.Asistente;
+import org.itla.Vistas.Medico;
 
 public class LoginModel {
 
@@ -16,10 +16,11 @@ public class LoginModel {
         
     }
     
-    public Usuario Autenticar(String codigoEmpleado, String contraseña) throws SQLException{
+    public void Autenticar(String codigoEmpleado, String contraseña) throws SQLException{
+        Conexion conexion = ConexionMySQL.getInstance();
         Usuario user = new Usuario();
         ResultSet result;
-        Conexion conexion = ConexionMySQL.getInstance(); //return false;
+        
         result = conexion.select("SELECT * FROM usuario WHERE id_usuario = '" + codigoEmpleado + "' AND clave = '"+ contraseña + "'");
         if(result.next() == true){
             if("administrador".equals(result.getString("tipo"))){
@@ -29,6 +30,22 @@ public class LoginModel {
         }else{
             user = null;
         }
-        return user;
+        if(user != null){
+            if(null != user.getTipo())switch (user.getTipo()) {
+                case "asistente":
+                    Asistente asistente = Asistente.getInstance();
+                    break;
+                case "medico":
+                    Medico medico = Medico.getInstance();
+                    break;
+                case "administrador":
+                    Administrador admin = Administrador.getInstance();
+                    break;
+                default:
+                    break;
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Credenciales incorrectas.");
+        }
     }
 }

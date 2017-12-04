@@ -1,11 +1,7 @@
 package org.itla.Vistas;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import org.itla.Entidades.Usuario;
 import org.itla.Modelos.LoginModel;
 
 public class Login extends javax.swing.JFrame {
@@ -55,6 +51,11 @@ public class Login extends javax.swing.JFrame {
 
         txtContraseña.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txtContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContraseñaActionPerformed(evt);
+            }
+        });
 
         btnOlvidarContraseña.setFont(new java.awt.Font("Tahoma", 2, 9)); // NOI18N
         btnOlvidarContraseña.setForeground(new java.awt.Color(102, 102, 255));
@@ -158,10 +159,12 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        LoginModel log = new LoginModel();
         try {
-            this.AutenticarUsuario(txtCodigoEmpleado.getText(), new String(txtContraseña.getPassword()).toString());
+            log.Autenticar(txtCodigoEmpleado.getText(), new String(txtContraseña.getPassword()).toString());
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
+            this.LimpiarPantalla();
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
@@ -173,6 +176,10 @@ public class Login extends javax.swing.JFrame {
             this.LimpiarPantalla();
         }
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
+        btnEntrarActionPerformed(evt);
+    }//GEN-LAST:event_txtContraseñaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -219,27 +226,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtCodigoEmpleado;
     private javax.swing.JPasswordField txtContraseña;
     // End of variables declaration//GEN-END:variables
-
-    private void AutenticarUsuario(String codigoEmpleado, String contraseña) throws SQLException {
-        LoginModel log = new LoginModel();
-        Usuario user = (Usuario)log.Autenticar(codigoEmpleado, contraseña);
-        if(user != null){
-            if(null != user.getTipo())switch (user.getTipo()) {
-                case "asistente":
-                    
-                    break;
-                case "medico":
-                    break;
-                case "administrador":
-                    break;
-                default:
-                    break;
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Credenciales incorrectas.");
-            this.LimpiarPantalla();
-        }
-    }
 
     private void LimpiarPantalla() {
         this.txtCodigoEmpleado.setText("");

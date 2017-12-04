@@ -7,8 +7,6 @@ package org.itla.Vistas;
 
 import org.itla.Algoritmos.AlgoritmoPacienteNombre;
 import org.itla.Algoritmos.AlgoritmosPacientes;
-import org.itla.Funcionalidades.Funcionalidad;
-import org.itla.Funcionalidades.FuncionalidadAsistente;
 
 
 /**
@@ -22,7 +20,6 @@ public class Administrador extends javax.swing.JFrame {
      */
     
     public static Administrador vista;
-    public Funcionalidad funcionalidad;
     
     public static Administrador getInstance(){
         if(vista==null){
@@ -34,7 +31,6 @@ public class Administrador extends javax.swing.JFrame {
     
     private Administrador() {
         initComponents();
-        funcionalidad=new FuncionalidadAsistente();
     }
 
     /**
@@ -598,8 +594,6 @@ public class Administrador extends javax.swing.JFrame {
     private void txBuscarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txBuscarPacienteActionPerformed
         if(cbBuscarPor.getSelectedItem().toString()=="Nombre"){
             AlgoritmosPacientes algoritmo=new AlgoritmoPacienteNombre();
-            List<Paciente>=funcionalidad.l
-            Algoritmo.buscar();
         }
     }//GEN-LAST:event_txBuscarPacienteActionPerformed
 

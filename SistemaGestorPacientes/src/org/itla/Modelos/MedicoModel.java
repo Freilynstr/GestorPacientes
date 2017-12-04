@@ -70,6 +70,12 @@ public class MedicoModel {
         conexion.insert(sql); 
         
         //llenar la tabla receta_medicamento
+        for(String medicamento : receta.getMedicamentos()){
+            sql = "INSERT INTO receta_medicamento(receta,medicamento) "
+            + "VALUES("+id_medico+","+medicamento+")";
+            conexion.conectar("localhost", "root", "", "gestorPacientes");
+            conexion.insert(sql); 
+        }
     }
   
 }

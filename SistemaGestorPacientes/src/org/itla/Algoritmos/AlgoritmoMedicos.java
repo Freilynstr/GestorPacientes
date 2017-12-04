@@ -5,10 +5,14 @@
  */
 package org.itla.Algoritmos;
 
+import java.util.ArrayList;
+import java.util.List;
+import org.itla.Entidades.Medico;
+
 /**
  *
  * @author Lenovo
  */
 public interface AlgoritmoMedicos {
-    
+    public ArrayList<Medico> buscarMedicos(List<Medico> medicos,String Especialidad);
 }

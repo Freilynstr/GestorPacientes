@@ -8,14 +8,15 @@ package org.itla.Vistas;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import org.itla.Algoritmos.AlgoritmoMedicoEspecialidad;
+import org.itla.Algoritmos.AlgoritmoMedicos;
 import org.itla.Algoritmos.AlgoritmoPacienteApellido;
 import org.itla.Algoritmos.AlgoritmoPacienteCedula;
 import org.itla.Algoritmos.AlgoritmoPacienteNombre;
 import org.itla.Algoritmos.AlgoritmosPacientes;
-import org.itla.Entidades.Especialidad;
 import org.itla.Entidades.Paciente;
 import org.itla.Modelos.AsistenteModel;
-
+import org.itla.Entidades.Medico;
 
 /**
  *
@@ -187,6 +188,17 @@ public class Asistente extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+
+        jcMedicosEspecialidades.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcMedicosEspecialidadesItemStateChanged(evt);
+            }
+        });
+        jcMedicosEspecialidades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcMedicosEspecialidadesActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Buscar Por:");
 
@@ -369,6 +381,17 @@ public class Asistente extends javax.swing.JFrame {
          }
         tablaPacientes.setModel(modelo);
     }//GEN-LAST:event_txBuscarPacienteKeyReleased
+
+    private void jcMedicosEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcMedicosEspecialidadesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcMedicosEspecialidadesActionPerformed
+
+    private void jcMedicosEspecialidadesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcMedicosEspecialidadesItemStateChanged
+        List<Medico> medicos=new ArrayList();
+        medicos=modelo.medicoEspecialidades();
+        AlgoritmoMedicos algoritmo=new AlgoritmoMedicoEspecialidad();
+        algoritmo.buscarMedicos(medicos, jcMedicosEspecialidades.getSelectedItem().toString());
+    }//GEN-LAST:event_jcMedicosEspecialidadesItemStateChanged
 
     /**
      * @param args the command line arguments

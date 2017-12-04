@@ -5,7 +5,10 @@ public class Especialidad {
     String nombre;
     
     //Constructores
-
+    public Especialidad(){
+        
+    }
+    
     public Especialidad(int codigoEspecialidad, String nombre) {
         this.codigoEspecialidad = codigoEspecialidad;
         this.nombre = nombre;

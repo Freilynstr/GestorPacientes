@@ -161,7 +161,10 @@ public class Login extends javax.swing.JFrame {
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         LoginModel log = new LoginModel();
         try {
-            log.Autenticar(txtCodigoEmpleado.getText(), new String(txtContraseña.getPassword()).toString());
+            if(log.Autenticar(txtCodigoEmpleado.getText(), new String(txtContraseña.getPassword()).toString())){
+                this.setVisible(false);
+                this.dispose();
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
             this.LimpiarPantalla();

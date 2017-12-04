@@ -2,6 +2,7 @@ package org.itla.Modelos;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.itla.Conexion.Conexion;
 import org.itla.Conexion.ConexionMySQL;
@@ -16,7 +17,7 @@ public class LoginModel {
         
     }
     
-    public void Autenticar(String codigoEmpleado, String contraseña) throws SQLException{
+    public Boolean Autenticar(String codigoEmpleado, String contraseña) throws SQLException{
         Conexion conexion = ConexionMySQL.getInstance();
         Usuario user = new Usuario();
         ResultSet result;
@@ -34,18 +35,23 @@ public class LoginModel {
             if(null != user.getTipo())switch (user.getTipo()) {
                 case "asistente":
                     Asistente asistente = Asistente.getInstance();
+                    asistente.setVisible(true);
                     break;
                 case "medico":
                     Medico medico = Medico.getInstance();
+                    medico.setVisible(true);
                     break;
                 case "administrador":
                     Administrador admin = Administrador.getInstance();
+                    admin.setVisible(true);
                     break;
                 default:
                     break;
             }
+            return true;
         }else{
             JOptionPane.showMessageDialog(null, "Credenciales incorrectas.");
+            return false;
         }
     }
 }

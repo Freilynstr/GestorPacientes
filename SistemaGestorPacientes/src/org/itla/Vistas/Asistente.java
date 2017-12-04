@@ -68,7 +68,7 @@ public class Asistente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaMedico = new javax.swing.JTable();
         jcMedicosEspecialidades = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -164,7 +164,7 @@ public class Asistente extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Buscar Paciente", jPanel3);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMedico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -187,7 +187,7 @@ public class Asistente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaMedico);
 
         jcMedicosEspecialidades.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -387,10 +387,16 @@ public class Asistente extends javax.swing.JFrame {
     }//GEN-LAST:event_jcMedicosEspecialidadesActionPerformed
 
     private void jcMedicosEspecialidadesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcMedicosEspecialidadesItemStateChanged
-        List<Medico> medicos=new ArrayList();
+        List<Medico> medicos=new ArrayList<>();
         medicos=modelo.medicoEspecialidades();
         AlgoritmoMedicos algoritmo=new AlgoritmoMedicoEspecialidad();
         algoritmo.buscarMedicos(medicos, jcMedicosEspecialidades.getSelectedItem().toString());
+        DefaultTableModel modelo=(DefaultTableModel)tablaMedico.getModel();
+         modelo.setRowCount(0);
+         for(Medico medico:medicos){
+             modelo.addRow(medico.convertirAArray());
+         }
+        tablaMedico.setModel(modelo);
     }//GEN-LAST:event_jcMedicosEspecialidadesItemStateChanged
 
     /**
@@ -446,9 +452,9 @@ public class Asistente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
     private javax.swing.JComboBox<String> jcMedicosEspecialidades;
+    private javax.swing.JTable tablaMedico;
     private javax.swing.JTable tablaPacientes;
     private java.awt.TextField txBuscarPaciente;
     // End of variables declaration//GEN-END:variables

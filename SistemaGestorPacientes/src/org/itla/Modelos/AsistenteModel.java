@@ -53,7 +53,6 @@ public class AsistenteModel {
 
         try{
             while(resultado.next()){
-                JOptionPane.showMessageDialog(null, resultado.getString("nombre"));
                 medico.add(new Medico(resultado.getString("nombre"),resultado.getString("especialidad")));
             }
         }catch(SQLException ex){

@@ -6,8 +6,8 @@ public class Medico extends Usuario{
    
    //Constructores
 
-    public Medico(int codigoEmpleado, String nombre, String apellido, String telefonos, String direccion, String cedula, String tipo,Especialidad especialidad) {
-        super(codigoEmpleado, nombre, apellido, telefonos, direccion, cedula, tipo);
+    public Medico(Especialidad especialidad, int codigoEmpleado, String nombre, String apellido, String telefonos, String direccion, String cedula, String tipo, String clave) {
+        super(codigoEmpleado, nombre, apellido, telefonos, direccion, cedula, tipo, clave);
         this.especialidad = especialidad;
     }
 
@@ -29,6 +29,12 @@ public class Medico extends Usuario{
     public void setEspecialidad(Especialidad especialidad) {
         this.especialidad = especialidad;
     }
-   
+    
+   public String[] convertirAArray(){
+       String[] datos=new String[2];
+       datos[0]=this.nombre;
+       datos[1]=this.especialidad.getNombre();
+       return datos;
+   }
    
 }

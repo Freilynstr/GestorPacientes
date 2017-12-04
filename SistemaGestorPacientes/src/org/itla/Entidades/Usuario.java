@@ -10,7 +10,7 @@ public class Usuario {
     String direccion;
     String cedula;
     String tipo;
-    
+    String clave;
     
     //Constructores
 
@@ -23,7 +23,7 @@ public class Usuario {
         this.tipo = tipo;
     }
 
-    public Usuario(int codigoEmpleado, String nombre, String apellido, String telefonos, String direccion, String cedula, String tipo) {
+    public Usuario(int codigoEmpleado, String nombre, String apellido, String telefonos, String direccion, String cedula, String tipo, String clave) {
         this.codigoEmpleado = codigoEmpleado;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -31,6 +31,7 @@ public class Usuario {
         this.direccion = direccion;
         this.cedula = cedula;
         this.tipo = tipo;
+        this.clave = clave;
     }
     
     //Getters y Setters
@@ -42,6 +43,15 @@ public class Usuario {
     public void setCodigoEmpleado(int codigoEmpleado) {
         this.codigoEmpleado = codigoEmpleado;
     }
+    
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+    
 
     public String getNombre() {
         return nombre;

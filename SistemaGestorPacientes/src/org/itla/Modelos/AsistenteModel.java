@@ -27,7 +27,6 @@ public class AsistenteModel {
     public ArrayList<String> Especialidades(){
         ArrayList<String> especialidades=new ArrayList<String>();
         String sql="select * from especialidad";
-        conexion=ConexionMySQL.getInstance();
         conexion.conectar("localhost", "root", "", "gestorPacientes");
         ResultSet resultado=conexion.select(sql);
         try{
@@ -47,7 +46,6 @@ public class AsistenteModel {
             "on e.id_especialidad=m.especialidad\n" +
             "inner join usuario as u\n" +
             "on u.id_usuario=m.id_medico";
-        conexion=ConexionMySQL.getInstance();
         conexion.conectar("localhost", "root", "", "gestorPacientes");
         ResultSet resultado=conexion.select(sql);
 
@@ -64,7 +62,6 @@ public class AsistenteModel {
     public ArrayList<Paciente> pacientes(){
         ArrayList<Paciente> pacientes=new ArrayList<Paciente>();
         String sql="select * from paciente";
-        conexion=ConexionMySQL.getInstance();
         conexion.conectar("localhost", "root", "", "gestorPacientes");
         ResultSet resultado=conexion.select(sql);
         try{
